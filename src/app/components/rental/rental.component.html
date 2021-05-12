@@ -1,0 +1,20 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Kiralama takip kodu</th>
+      <th scope="col">Arabanın Adı</th>
+      <th scope="col">Müşteri</th>
+      <th scope="col">Arabanın Markası</th>
+      <th scope="col">Kiralama Tarihi</th>
+      <th scope="col">Sözleşme Bitiş Tarihi</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let item of rentals">
+    <td>{{ item.id }}</td>
+    <td>{{ item.carName }}</td>
+    <td>{{ item.companyName }}</td>
+    <td>{{ item.brandName }}</td>
+    <td>{{ item.rentDate }}</td>
+    <td>{{ item.returnDate }}</td>
+  </tr>
+</table>

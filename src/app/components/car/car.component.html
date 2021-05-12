@@ -1,0 +1,20 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Araba Id</th>
+      <th scope="col">Marka</th>
+      <th scope="col">Renk</th>
+      <th scope="col">Model Yılı</th>
+      <th scope="col">Fiyat</th>
+      <th scope="col">Araba Adı</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let item of cars">
+    <td>{{ item.carId }}</td>
+    <td>{{ item.brandName }}</td>
+    <td>{{ item.colorName }}</td>
+    <td>{{ item.modelYear }}</td>
+    <td>{{ item.dailyPrice }}</td>
+    <td>{{ item.carDescription }}</td>
+  </tr>
+</table>
