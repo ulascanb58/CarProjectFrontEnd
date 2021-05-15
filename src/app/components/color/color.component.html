@@ -1,13 +1,18 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Renkler</th>
+      <th scope="col">RENKLER</th>
     </tr>
   </thead>
 </table>
 
-<ul class="list-group list-group-flush" *ngFor="let item of colors">
-  <li class="list-group-item">
+<ul class="list-group">
+  
+  <li (click)="setCurrentColor(item)"
+  routerLink="/cars/color/{{item.id}}"
+   [class]="getCurrentColorClass(item)" *ngFor="let item of colors">
     <td>{{ item.colorName }}</td>
   </li>
 </ul>
+
+<h5 *ngIf="currentColor">{{currentColor.colorName}} seçtiniz!</h5>

@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { BrandComponent} from './components/brand/brand.component';
 import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
-import { CarComponent } from './components/car/car.component';
+
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { CardetailsComponent } from './components/cardetails/cardetails.component';
+import { OnecardetailComponent } from './components/onecardetail/onecardetail.component';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +19,12 @@ import { NaviComponent } from './components/navi/navi.component';
     BrandComponent,
     ColorComponent,
     CustomerComponent,
-    CarComponent,
     RentalComponent,
-    NaviComponent
+    NaviComponent,
+    CardetailsComponent,
+    OnecardetailComponent,
+   
+ 
   ],
   imports: [
     BrowserModule,

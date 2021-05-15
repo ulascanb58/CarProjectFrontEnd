@@ -1,0 +1,78 @@
+<br>
+<a href="http://localhost:3535/">< Geri</a>
+<br>
+<div class="row">
+
+  <div class="col-md-8" *ngFor="let checkimage of cars">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div  class="carousel-indicators">
+        <button *ngFor="let image of images; let i = index"
+          type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{ i }}"
+          [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1">
+        </button>
+      </div>
+  
+    <div class="carousel-inner" *ngFor="let checkimage of cars">
+      <div class="carousel-item active" 
+        *ngFor="let img of images;index as i;first as firstImage"
+        [ngClass]="{active:firstImage}">
+        <img class="d-block w-100" height="400" src="{{Path}}{{img.imagePath}}"/>
+      </div>
+    </div>
+    <img class="d-block w-100" [hidden]="checkimage.imagePath[0]!=null" *ngIf="checkimage.imagePath[0]==null" height="400" src="{{Path}}/Images/logo.png"/>
+  </div>
+</div>
+
+<div *ngFor="let car of cars" class="col-md-4">
+  <div class="card">
+    <div class="card-body">
+      <p><b>Takip Kodu : </b>{{car.carId}}</p>
+      <p><b>Marka : </b>{{car.brandName}}</p>
+      <p><b>Model Yılı : </b>{{car.modelYear}}</p>
+      <p><b>Renk : </b>{{car.colorName}}</p>
+      <p><b>Günlük Fiyat : </b>{{car.price}} TL</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <br><br>
+  <div class="card">
+    <div class="card-body" *ngFor="let img of cars">
+      <h3 *ngIf="img.imagePath[0]==null">                                                  Resim Yok</h3>
+      <img height="100" [hidden]="img.imagePath[0]==null" width="150" src="{{Path}}{{img.imagePath[0]}}">
+      <img height="100" [hidden]="img.imagePath[1]==null" width="150" src="{{Path}}{{img.imagePath[1]}}">
+      <img height="100" [hidden]="img.imagePath[2]==null" width="150" src="{{Path}}{{img.imagePath[2]}}">
+      <img height="100" [hidden]="img.imagePath[3]==null" width="150" src="{{Path}}{{img.imagePath[3]}}">
+      <img height="100" [hidden]="img.imagePath[4]==null" width="150" src="{{Path}}{{img.imagePath[4]}}">
+    </div>
+  </div>
+</div> 
+
+
+<div *ngFor="let car of cars" class="col-md-12">
+  <br><br>
+  <div class="card">
+    <div class="card-body">
+      <strong>Açıklama</strong>
+      <p>{{car.description}}</p>
+    </div>
+  </div>
+</div> 
+
+
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <img class="img-responsive" src="" />
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>

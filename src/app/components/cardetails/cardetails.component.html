@@ -1,0 +1,48 @@
+<div *ngIf="dataLoaded == false" class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<br />
+
+<div>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Takip Kodu</th>
+        <th>Resim</th>
+        <th>Marka</th>
+        <th>Renk</th>
+        <th>Tanımı</th>
+        <th>Yıl</th>
+        <th>Fiyat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let carDetail of carDetails"
+        style="height: 175px; width: 600px"
+        (click)="setCurrentCar(carDetail)"
+        routerLink="cars/onecardetail/{{ carDetail.carId }}"
+      >
+        <td>{{ carDetail.carId }}</td>
+        <td>
+          <div class="card" style="height: 50px; width: 250px">
+            <img
+              *ngIf="carDetail.imagePath[0] == null"
+              src="{{ Path }}/Images/logo.png"
+            />
+            <img
+              *ngIf="carDetail.imagePath[0] != null"
+              src="{{ Path }}{{ carDetail.imagePath[0] }}"
+            />
+          </div>
+        </td>
+
+        <td>{{ carDetail.brandName }}</td>
+        <td>{{ carDetail.colorName }}</td>
+        <td>{{ carDetail.description }}</td>
+        <td>{{ carDetail.modelYear }}</td>
+        <td>{{ carDetail.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

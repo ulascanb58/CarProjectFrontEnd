@@ -6,8 +6,11 @@
   </thead>
 </table>
 
-<ul class="list-group list-group-flush" *ngFor="let item of brands">
-  <li class="list-group-item">
+<ul class="list-group">
+  <li (click)="setCurrentBrand(item)"
+  routerLink="/cars/brand/{{item.id}}" [class]="getCurrentBrandClass(item)" *ngFor="let item of brands">
     <td>{{ item.brandName }}</td>
   </li>
 </ul>
+
+<h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz!</h5>
