@@ -1,3 +1,6 @@
+<div class="accordion-item">
+
+  
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -5,12 +8,18 @@
     </tr>
   </thead>
 </table>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Marka Arat</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ifade giriniz..">
+</div>
+
 
 <ul class="list-group">
   <li (click)="setCurrentBrand(item)"
-  routerLink="/cars/brand/{{item.id}}" [class]="getCurrentBrandClass(item)" *ngFor="let item of brands">
-    <td>{{ item.brandName }}</td>
+  routerLink="/cars/brand/{{item.brandId}}" [class]="getCurrentBrandClass(item)" *ngFor="let item of brands |brandFilterPipe:filterText">
+    <td>{{ item.brandName}}</td>
   </li>
 </ul>
 
 <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz!</h5>
+</div>

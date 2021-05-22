@@ -1,9 +1,70 @@
-<div *ngIf="dataLoaded == false" class="spinner-border" role="status">
-  <span class="visually-hidden">Loading...</span>
+<div class="row">
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Araba Arat</label>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="ifade giriniz.."
+    />
+  </div>
+  <div *ngIf="filterText" class="alert alert-success">
+    {{ filterText }} aradınız.
+  </div>
 </div>
-<br />
 
-<div>
+<div class="row">
+  <div class="col-md-5">
+    <select
+      [(ngModel)]="filterBrandId"
+      class="form-select"
+      aria-placeholder="Brands"
+    >
+      <option value="0">Brands</option>
+      <option
+        *ngFor="let brand of brands"
+        [value]="brand.brandId"
+        [selected]="getSelectedBrand(brand.brandId)"
+      >
+        {{ brand.brandName }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-5">
+    <select [(ngModel)]="filterColorId" class="form-select" aria-label="Colors">
+      <option value="0">Colors</option>
+      <option
+        *ngFor="let color of colors"
+        [value]="color.colorId"
+        [selected]="getSelectedColor(color.colorId)"
+      >
+        {{ color.colorName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="col-md-1">
+   
+    <button
+      id="filt1"
+      routerLink="/cars/brand/{{ filterBrandId }}/color/{{ filterColorId }}"
+      type="button"
+      class="btn btn-success"
+    >
+      Filter
+    </button>
+  </div>
+  <div class="col-md-1">
+    <button id="filt2" routerLink="/cars" type="button" class="btn btn-dark">
+      Clear
+    </button>
+    
+  </div>
+  </div>
+
+  <br>
+<div class="row">
   <table class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
@@ -13,12 +74,13 @@
         <th>Renk</th>
         <th>Tanımı</th>
         <th>Yıl</th>
-        <th>Fiyat</th>
+        <th>Günlük Fiyatı</th>
+        <th>Satış Fiyatı</th>
       </tr>
     </thead>
     <tbody>
       <tr
-        *ngFor="let carDetail of carDetails"
+        *ngFor="let carDetail of carDetails | carFilterPipe: filterText"
         style="height: 175px; width: 600px"
         (click)="setCurrentCar(carDetail)"
         routerLink="cars/onecardetail/{{ carDetail.carId }}"
@@ -37,11 +99,12 @@
           </div>
         </td>
 
-        <td>{{ carDetail.brandName }}</td>
-        <td>{{ carDetail.colorName }}</td>
+        <td>{{ carDetail.brandName | uppercase }}</td>
+        <td>{{ carDetail.colorName | uppercase }}</td>
         <td>{{ carDetail.description }}</td>
         <td>{{ carDetail.modelYear }}</td>
-        <td>{{ carDetail.price }}</td>
+        <td>{{ carDetail.price }} TL</td>
+        <td>{{ carDetail.price | carPriceAdded: 100 }} TL</td>
       </tr>
     </tbody>
   </table>

@@ -1,3 +1,4 @@
+<div class="accordion-item">
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -5,14 +6,19 @@
     </tr>
   </thead>
 </table>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Renk Arat</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="ifade giriniz..">
+</div>
 
 <ul class="list-group">
   
   <li (click)="setCurrentColor(item)"
-  routerLink="/cars/color/{{item.id}}"
-   [class]="getCurrentColorClass(item)" *ngFor="let item of colors">
-    <td>{{ item.colorName }}</td>
+  routerLink="/cars/color/{{item.colorId}}"
+   [class]="getCurrentColorClass(item)" *ngFor="let item of colors |colorFilterPipe:filterText">
+    <td>{{ item.colorName}}</td>
   </li>
 </ul>
 
 <h5 *ngIf="currentColor">{{currentColor.colorName}} seçtiniz!</h5>
+</div>

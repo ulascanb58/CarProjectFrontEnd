@@ -1,3 +1,4 @@
+<tbody>
 <br>
 <a href="http://localhost:3535/"><< Geri</a>
 <br>
@@ -23,6 +24,7 @@
   </div>
 </div>
 
+
 <div *ngFor="let car of cars" class="col-md-4">
   <div class="card">
     <div class="card-body">
@@ -30,8 +32,11 @@
       <p><b>Marka : </b>{{car.brandName}}</p>
       <p><b>Model Yılı : </b>{{car.modelYear}}</p>
       <p><b>Renk : </b>{{car.colorName}}</p>
-      <p><b>Günlük Fiyat : </b>{{car.price}} TL</p>
-
+      <p><b>Günlük Fiyatı : </b>{{car.price}} TL</p>
+      <p><b>Satış Fiyatı : </b>{{car.price |carPriceAdded:100}} TL </p>
+      <div class="d-grid gap-3 col-4 mx-auto">
+      <p><button type="button" class="btn btn-success btn-lg">Kirala</button></p>
+    </div>
     </div>
   </div>
 </div>
@@ -76,3 +81,4 @@
       </div>
   </div>
 </div>
+</tbody>
