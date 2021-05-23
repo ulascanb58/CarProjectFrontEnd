@@ -1,0 +1,18 @@
+<li *ngIf="cartItems.length>0" class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Sepetiniz
+    </a>
+    <ul style="width: 150px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+      <li *ngFor="let cartItem of cartItems"  ><a class="dropdown-item" ><span class="badge bg-dark" >{{cartItem.quantity}} </span>{{cartItem.carDetail.brandName}}
+        <span class="badge bg-dark"  (click)="removeFromCart(cartItem.carDetail)">Sil</span></a>
+        <button class="badge bg-dark" routerLink="cars/onecardetail/{{cartItem.carDetail.carId}}" >Detail</button>
+      </li>
+        
+       
+
+      <li><hr class="dropdown-divider"></li>
+      <li></li>
+
+    </ul>
+  </li>

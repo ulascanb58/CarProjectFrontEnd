@@ -14,7 +14,10 @@
 </div>
 
 
+
+
 <ul class="list-group">
+  <li (click)="getBrands" [class]="getAllBrandClass()" routerLink="/brands">Bütün Markalar</li>
   <li (click)="setCurrentBrand(item)"
   routerLink="/cars/brand/{{item.brandId}}" [class]="getCurrentBrandClass(item)" *ngFor="let item of brands |brandFilterPipe:filterText">
     <td>{{ item.brandName}}</td>

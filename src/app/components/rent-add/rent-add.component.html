@@ -1,0 +1,39 @@
+<div 
+class="row mx-auto shadow mb-3 bg-body rounded"
+style="width: auto; height: 100px"
+>
+<div  class="col-md-12 my-auto" >
+  <div class="  " style="text-align: center">
+    <label
+      class="text-info"
+      style="font-size: large; font-weight: bold"
+      for="Date of Birth"
+      
+    >
+    Rent Date:
+    <input
+      style="width: 150px; height: 35px; vertical-align: auto"
+      type="date"
+      [formControl]="valueService.returnDate"
+      name="date"
+    />
+  </label>
+   
+  <label
+  
+  class="text-info"
+  style="font-size: large; margin-left: 100px; font-weight: bold"
+  for="Date of Birth"
+>
+  Return Date:
+  <input
+    style="width: 150px; height: 35px; vertical-align: auto"
+    type="date"
+    [formControl]="valueService.returnDate"
+    name="date"
+  />
+  </label>
+
+  </div>
+</div>
+</div>

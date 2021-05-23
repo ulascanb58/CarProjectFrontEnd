@@ -12,13 +12,17 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CardetailsComponent } from './components/cardetails/cardetails.component';
 import { OnecardetailComponent } from './components/onecardetail/onecardetail.component';
 import { CarPriceAddedPipe } from './pipes/car-price-added.pipe';
-
-import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule } from "@angular/platform-browser/animations"
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
 import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
 
-import {ToastrModule} from "ngx-toastr"
+import {ToastrModule} from "ngx-toastr";
+import { RentAddComponent } from './components/rent-add/rent-add.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import {ToastrModule} from "ngx-toastr"
     CarPriceAddedPipe,
     CarFilterPipePipe,
     BrandFilterPipePipe,
-    ColorFilterPipePipe
+    ColorFilterPipePipe,
+    RentAddComponent,
+    PaymentComponent,
+    CartSummaryComponent
+ 
   
 
    
@@ -44,6 +52,8 @@ import {ToastrModule} from "ngx-toastr"
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })

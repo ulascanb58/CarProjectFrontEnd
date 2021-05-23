@@ -9,8 +9,10 @@ import { Rental } from 'src/app/models/rental';
 import { BrandService } from 'src/app/services/brand.service';
 import { CardetailService } from 'src/app/services/cardetail.service';
 import { CarimageService } from 'src/app/services/carimage.service';
+import { CartService } from 'src/app/services/cart.service';
 import { ColorService } from 'src/app/services/color.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { ValueService } from 'src/app/services/value.service';
 
 @Component({
   selector: 'app-cardetails',
@@ -29,7 +31,7 @@ export class CardetailsComponent implements OnInit {
   dataLoaded = false;
   currentImage: CarImage;
   filterText = '';
-  rentals: Rental[] = [];
+ 
 
   Path = 'https://localhost:44392';
 
@@ -40,7 +42,9 @@ export class CardetailsComponent implements OnInit {
     private colorService: ColorService,
     private brandService: BrandService,
     private toastrService: ToastrService,
-    private rentalService: RentalService
+    private rentalService: RentalService,
+    private cartService:CartService,
+    private valueService:ValueService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +67,7 @@ export class CardetailsComponent implements OnInit {
     });
   }
 
+ 
   setCurrentCar(car: CarDetail) {
     this.currentCar = car;
   }

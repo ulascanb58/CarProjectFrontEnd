@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/carDetail';
 import { CarImage } from 'src/app/models/carimage';
 import { CardetailService } from 'src/app/services/cardetail.service';
 import { CarimageService } from 'src/app/services/carimage.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-onecardetail',
@@ -20,7 +22,9 @@ export class OnecardetailComponent implements OnInit {
 
   constructor(private carDetailsService:CardetailService,
     private carImageService:CarimageService,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,
+    private toastrService:ToastrService,
+    private cartService:CartService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -31,7 +35,10 @@ export class OnecardetailComponent implements OnInit {
     })
     
     }
-
+    addToCart(car: CarDetail) {
+      this.toastrService.success('Add to Cart ', car.brandName);
+      this.cartService.addToCart(car);
+    }
   
   getCarById(carId:number){
     this.carDetailsService.getCarById(carId).subscribe(response=>{
